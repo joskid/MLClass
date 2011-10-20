@@ -3,26 +3,25 @@
 
 open MathNet.Numerics.LinearAlgebra.Double
 open MathNet.Numerics.LinearAlgebra.Generic
+open MathNet.Numerics.FSharp
 
-let intToFloat data = 
-    let innerIntToFloat data = 
-        List.map (fun x -> float x) data
-    List.map (fun (x, y) -> (new DenseVector(Array.ofList (innerIntToFloat x)) :> Vector<float>, float y)) data
+let prepare data = 
+    data |> List.map (fun (x, _) -> List.map (fun x -> float x) x) |> matrix,
+    data |> List.map (fun (_, y) -> float y) |> vector
 
-let data = [[2; 5; 1; 5], 460
+let X, y = [[2; 5; 1; 5], 460
             [1; 3; 2; 4], 23
             [1; 3; 2; 3], 315
-            [8; 2; 1; 3], 178] |> intToFloat
+            [8; 2; 1; 3], 178] |> prepare
 
-let t = MultivariateLinearRegression.gradientDescent 0.01 data
+let t = MultivariateLinearRegression.gradientDescent 0.01 X y
+let J = MultivariateLinearRegression.J X y t 
 t |> printfn "t = %A"
+J |> printfn "J = %A"
 
-MultivariateLinearRegression.J t data |> printfn "J = %A"
+MultivariateLinearRegression.plotGradientDescentIterations 0.01 X y
 
-//MultivariateLinearRegression.plotGradientDescentIterations 0.01 data
-
-//TODO: this should give the same result than gradient descent but it's not :(
-let t2 = MultivariateLinearRegression.normalEquation data
-t2 |> printfn "t = %A"
-
-MultivariateLinearRegression.J t2 data |> printfn "J = %A"
+let t2 = MultivariateLinearRegression.normalEquation X y
+let J2 = MultivariateLinearRegression.J X y t2 
+t2 |> printfn "t2 = %A"
+J2 |> printfn "J2 = %A"

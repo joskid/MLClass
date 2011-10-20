@@ -42,8 +42,9 @@
     <Compile Include="FsWpf.fs" />
     <Resource Include="ChartWindow.xaml" />
     <Compile Include="ChartWindow.fs" />
-    <Compile Include="IterationUtils.fs" />
-    <Compile Include="ChartUtils.fs" />
+    <Compile Include="IterationExtensions.fs" />
+    <Compile Include="ChartExtensions.fs" />
+    <Compile Include="AlgebraExtensions.fs" />
     <Compile Include="LinearRegression.fs" />
     <Compile Include="MultivariateLinearRegression.fs" />
     <Compile Include="Program.fs" />

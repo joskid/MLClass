@@ -18,5 +18,6 @@
 // Utils
 #load "FsWpf.fs"
 #load "ChartWindow.fs"
-#load "IterationUtils.fs"
-#load "ChartUtils.fs"
+#load "IterationExtensions.fs"
+#load "ChartExtensions.fs"
+#load "AlgebraExtensions.fs"

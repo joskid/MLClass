@@ -1,5 +1,5 @@
 ﻿[<AutoOpen>]
-module IterationUtils
+module IterationExtensions
 
 let iterateUntilConvergence iteration initialValue =
     let rec loop t = 
@@ -22,6 +22,6 @@ let iterateUntilConvergenceWithSteps iteration initialValue =
 let simplifyIterationSteps maxSteps iterationSteps =
     let n = Array.length iterationSteps
     seq {
-        for i in 0 .. (n / maxSteps) .. n-1 do
+        for i in 0 .. (max 1 (n / maxSteps)) .. n-1 do
             yield iterationSteps.[i]
     } |> Array.ofSeq

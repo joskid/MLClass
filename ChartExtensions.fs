@@ -1,5 +1,5 @@
 ﻿[<AutoOpen>]
-module ChartUtils
+module ChartExtensions
 
 open MSDN.FSharp.Charting
 
