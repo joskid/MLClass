@@ -26,6 +26,6 @@ open MSDN.FSharp.Charting
                              
 let chart t (data : (float*float) list) =
     FSharpChart.Combine
-        [ FSharpChart.Point(data)
+        [ FSharpChart.Point(data) |> withRedCrossMarkerStyle
           FSharpChart.Line([ for (x, y) in data -> (x, h t x) ]) ]
     |> ChartWindow.show (J data t |> sprintf "Linear Regression (J=%A)")
