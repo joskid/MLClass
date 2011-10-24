@@ -1,27 +1,20 @@
 ﻿[<AutoOpen>]
 module IterationExtensions
 
-let iterateUntilConvergence iteration initialValue =
-    let rec loop t = 
-        let nextT = iteration t
-        if t <> nextT then
-            loop nextT
+let iterateUntilConvergence iteration maxIterations x0 =
+    let rec loop maxIterations x = 
+        let x' = iteration x
+        if x <> x' && maxIterations > 0 then
+            loop (maxIterations-1) x'
         else
-            nextT
-    loop initialValue
+            x'
+    loop maxIterations x0
 
-let iterateUntilConvergenceWithSteps iteration initialValue =
-    let rec loop t = seq {
-        yield t
-        let nextT = iteration t
-        if t <> nextT then
-            yield! loop nextT
+let iterateUntilConvergenceWithIntermediateResults iteration maxIterations x0 =
+    let rec loop maxIterations x = seq {
+        yield x
+        let x' = iteration x
+        if x <> x' && maxIterations > 0 then
+            yield! loop (maxIterations-1) x'
     }
-    loop initialValue
-
-let simplifyIterationSteps maxSteps iterationSteps =
-    let n = Array.length iterationSteps
-    seq {
-        for i in 0 .. (max 1 (n / maxSteps)) .. n-1 do
-            yield iterationSteps.[i]
-    } |> Array.ofSeq
+    loop maxIterations x0

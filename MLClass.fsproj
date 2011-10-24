@@ -6,11 +6,12 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{302b99b7-3ef4-43ba-8c7f-1f2635f9495b}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>MLClass</RootNamespace>
     <AssemblyName>MLClass</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <Name>MLClass</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -37,33 +38,35 @@
   <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="!Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition=" Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <ItemGroup>
-    <None Include="packages.config" />
     <Compile Include="FsWpf.fs" />
     <Resource Include="ChartWindow.xaml" />
     <Compile Include="ChartWindow.fs" />
     <Compile Include="IterationExtensions.fs" />
     <Compile Include="ChartExtensions.fs" />
-    <Compile Include="AlgebraExtensions.fs" />
+    <Compile Include="LinearAlgebraExtensions.fs" />
+    <Compile Include="LinearRegressionWithOneVariable.fs" />
     <Compile Include="LinearRegression.fs" />
-    <Compile Include="MultivariateLinearRegression.fs" />
     <Compile Include="Program.fs" />
     <None Include="Setup.fsx" />
-    <None Include="Linear regression with one variable.fsx" />
-    <None Include="Linear regression with multiple variables.fsx" />
+    <None Include="Test LinearRegresionWithOneVariable.fsx" />
+    <None Include="Test LinearRegression.fsx" />
+    <None Include="ex1.fsx" />
+    <None Include="ex1_multi.fsx" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DynamicDataDisplay">
+      <HintPath>libs\DynamicDataDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="MathNet.Numerics">
-      <HintPath>packages\MathNet.Numerics.2.1.2\lib\Net40\MathNet.Numerics.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>libs\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="MathNet.Numerics.FSharp">
-      <HintPath>packages\MathNet.Numerics.FSharp.2.1.2\lib\Net40\MathNet.Numerics.FSharp.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>libs\MathNet.Numerics.FSharp.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core" />
     <Reference Include="MSDN.FSharpChart">
-      <HintPath>packages\MSDN.FSharpChart.dll.0.55\MSDN.FSharpChart.dll</HintPath>
+      <HintPath>libs\MSDN.FSharpChart.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -77,8 +80,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="zlib.net">
-      <HintPath>packages\zlib.net.1.0.3.0\lib\zlib.net.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>libs\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,15 +9,18 @@
 #r "System.Drawing"
 #r "System.Windows.Forms"
 #r "System.Windows.Forms.DataVisualization"
-#r "packages/MSDN.FSharpChart.dll.0.55/MSDN.FSharpChart.dll"
+#r "libs/MSDN.FSharpChart.dll"
 
 // MathNet
-#r "packages/MathNet.Numerics.2.1.2/lib/Net40/MathNet.Numerics.dll"
-#r "packages/MathNet.Numerics.FSharp.2.1.2/lib/Net40/MathNet.Numerics.FSharp.dll"
+#r "libs/MathNet.Numerics.dll"
+#r "libs/MathNet.Numerics.FSharp.dll"
+
+// DynamicDataDisplay
+#r "libs/DynamicDataDisplay.dll"
 
 // Utils
 #load "FsWpf.fs"
 #load "ChartWindow.fs"
 #load "IterationExtensions.fs"
 #load "ChartExtensions.fs"
-#load "AlgebraExtensions.fs"
+#load "LinearAlgebraExtensions.fs"
