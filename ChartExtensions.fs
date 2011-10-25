@@ -26,7 +26,7 @@ let plotIterations title functionTitle values =
     |> FSharpChart.WithArea.AxisY(Title = functionTitle)
     |> ChartWindow.show title
 
-let withRedCrossMarkerStyle c = c |> FSharpChart.WithSeries.Marker(MarkerStyle.Cross, Color.Red, 10)
+let withRedCrossMarkerStyle c = c |> FSharpChart.WithSeries.Marker(Color.Red, 10, Style = MarkerStyle.Cross)
 
 let linspace min max (n:int) =
     [| min .. (max - min) / (float n) .. max |]
