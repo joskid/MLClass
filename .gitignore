@@ -1,3 +1,6 @@
 bin/
 obj/
 *.suo
+*.csproj.user
+libs/WPFChart/bin/*
+libs/WPFChart/obj/*

@@ -66,3 +66,11 @@ let plotContour title (xLabel, yLabel) (xMin, yMin) (xMax, yMax) f =
 
     let window = new Window(Width = 600.0, Height = 600.0, Content = plotter, Title = title)
     window.Show() |> ignore
+
+//from http://www.codeproject.com/KB/WPF/WPFChart3D.aspx
+open System
+open WPFChart3D
+
+let plotSurface title (xMin, yMin) (xMax, yMax) (f: float * float -> float) =     
+    let window = new SurfacePlotWindow(xMin, xMax, yMin, yMax, new Func<_,_,_>(fun x y -> f (x, y)), Title = title)
+    window.Show() |> ignore

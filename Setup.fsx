@@ -18,6 +18,9 @@
 // DynamicDataDisplay
 #r "libs/DynamicDataDisplay.dll"
 
+// WPFChart
+#r "libs/WPFChart.dll"
+
 // Utils
 #load "FsWpf.fs"
 #load "ChartWindow.fs"

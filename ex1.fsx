@@ -22,7 +22,7 @@ let chartWindow =
     |> withRedCrossMarkerStyle
     |> FSharpChart.WithArea.AxisX(Title = "Population of City in 10,000s", Minimum = 4.0)
     |> FSharpChart.WithArea.AxisY(Title = "Profit in $10,000s")
-    |> ChartWindow.show "Figure 1"
+    |> ChartWindow.show "Population of City vs. Profit"
     
 // =================== Part 3: Gradient descent ===================
 
@@ -52,6 +52,6 @@ printfn "For population = 70,000, we predict a profit of %A" (predict2 * 10000.0
 
 printfn "Visualizing J(θ0, θ1) ..."
 
-//TODO: surface plot
+plotSurface "J surface" (-10.0, -1.0) (10.0, 4.0) (LinearRegressionWithOneVariable.J data)
 
 plotContour "J contour" ("θ0", "θ1") (-10.0, -1.0) (10.0, 4.0) (LinearRegressionWithOneVariable.J data)
