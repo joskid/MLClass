@@ -124,6 +124,16 @@
  forming a step-like progression.
 </summary>
 </member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedColumn100``2(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple`2{``0,``1}}})">
+<summary>
+ Displays series of the same chart type as stacked columns.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedColumn100``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Displays series of the same chart type as stacked columns.
+</summary>
+</member>
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedColumn100``2(System.IObservable{System.Tuple`2{``0,``1}},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
 <summary>
  Displays multiple series of data as stacked columns. The cumulative
@@ -152,6 +162,16 @@
 <summary>
  Displays multiple series of data as stacked columns. The cumulative
  proportion of each stacked element is always 100% of the Y axis.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedColumn``2(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple`2{``0,``1}}})">
+<summary>
+ Displays series of the same chart type as stacked columns.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedColumn``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Displays series of the same chart type as stacked columns.
 </summary>
 </member>
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedColumn``2(System.IObservable{System.Tuple`2{``0,``1}},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
@@ -184,6 +204,16 @@
  total across categories.
 </summary>
 </member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar100``2(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple`2{``0,``1}}})">
+<summary>
+ Displays series of the same chart type as stacked bars.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar100``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Displays series of the same chart type as stacked bars.
+</summary>
+</member>
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar100``2(System.IObservable{System.Tuple`2{``0,``1}},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
 <summary>
  Displays multiple series of data as stacked bars. The cumulative
@@ -214,6 +244,16 @@
  proportion of each stacked element is always 100% of the Y axis.
 </summary>
 </member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar``2(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple`2{``0,``1}}})">
+<summary>
+ Displays series of the same chart type as stacked bars.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Displays series of the same chart type as stacked bars.
+</summary>
+</member>
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar``2(System.IObservable{System.Tuple`2{``0,``1}},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
 <summary>
  Displays series of the same chart type as stacked bars.
@@ -237,6 +277,16 @@
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedBar``1(System.Collections.Generic.IEnumerable{``0})">
 <summary>
  Displays series of the same chart type as stacked bars.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedArea100``2(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple`2{``0,``1}}})">
+<summary>
+ Displays series of the same chart type as stacked areas.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedArea100``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Displays series of the same chart type as stacked areas.
 </summary>
 </member>
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedArea100``2(System.IObservable{System.Tuple`2{``0,``1}},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
@@ -267,6 +317,16 @@
 <summary>
  Displays multiple seriesÿof data as stacked areas. The cumulative proportion
  of each stacked element is always 100% of the Y axis.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedArea``2(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{System.Tuple`2{``0,``1}}})">
+<summary>
+ Displays series of the same chart type as stacked areas.
+</summary>
+</member>
+<member name="M:MSDN.FSharp.Charting.FSharpChart.StackedArea``1(Microsoft.FSharp.Collections.FSharpList{Microsoft.FSharp.Collections.FSharpList{``0}})">
+<summary>
+ Displays series of the same chart type as stacked areas.
 </summary>
 </member>
 <member name="M:MSDN.FSharp.Charting.FSharpChart.StackedArea``2(System.IObservable{System.Tuple`2{``0,``1}},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
@@ -1075,6 +1135,30 @@
  Emphasizes the degree of change over time and shows the
  relationship of the parts to a whole.
 </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
 </member>
 <member name="">
 
