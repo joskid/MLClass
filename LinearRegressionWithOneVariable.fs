@@ -36,6 +36,8 @@ let plot θ (data : (float*float) list) =
     FSharpChart.Combine
         [ FSharpChart.Point(data, Name = "Training Data") |> withRedCrossMarkerStyle
           FSharpChart.Line([ for (x, _) in data -> (x, h θ x) ], Name = "Linear Regression") ]
+    |> FSharpChart.WithLegend()
+    |> ChartWindow.show "Linear Regression"
 
 open System.IO
 
