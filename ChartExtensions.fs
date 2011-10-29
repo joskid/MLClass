@@ -67,10 +67,16 @@ let plotContour title (xLabel, yLabel) (xMin, yMin) (xMax, yMax) f =
     let window = new Window(Width = 600.0, Height = 600.0, Content = plotter, Title = title)
     window.Show() |> ignore
 
-//from http://www.codeproject.com/KB/WPF/WPFChart3D.aspx
 open System
-open WPFChart3D
 
-let plotSurface title (xMin, yMin) (xMax, yMax) (f: float * float -> float) =     
-    let window = new SurfacePlotWindow(xMin, xMax, yMin, yMax, new Func<_,_,_>(fun x y -> f (x, y)), Title = title)
+// from http://www.codeproject.com/KB/WPF/WPFChart3D.aspx
+let plotSurface title (xMin, yMin) (xMax, yMax) (f: float * float -> float) =
+    let f = new Func<_,_,_>(fun x y -> f (x, y))
+    let window = new WPFChart3D.SurfacePlotWindow(xMin, xMax, yMin, yMax, f, Title = title)
     window.Show() |> ignore
+
+// from http://www.codeproject.com/KB/graphics/surfacePloter.aspx
+let plotSurface2 title (xMin, yMin) (xMax, yMax) (f: float * float -> float) =
+    //let f (x1, x2) = sin(x1)*cos(x2)/(sqrt(sqrt(x1*x1+x2*x2))+1.0)*10.0
+    let f = new Func<_,_,_>(fun x y -> f (x, y))
+    SurfacePlotWindow.show title f (5.0, 10.0, 200.0)

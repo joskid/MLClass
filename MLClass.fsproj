@@ -41,17 +41,20 @@
     <Compile Include="FsWpf.fs" />
     <Resource Include="ChartWindow.xaml" />
     <Compile Include="ChartWindow.fs" />
+    <Compile Include="SurfacePlotWindow.fs" />
     <Compile Include="IterationExtensions.fs" />
     <Compile Include="ChartExtensions.fs" />
     <Compile Include="LinearAlgebraExtensions.fs" />
     <Compile Include="LinearRegressionWithOneVariable.fs" />
     <Compile Include="LinearRegression.fs" />
-    <Compile Include="Program.fs" />
     <None Include="Setup.fsx" />
     <None Include="Test LinearRegresionWithOneVariable.fsx" />
     <None Include="Test LinearRegression.fsx" />
     <None Include="ex1.fsx" />
     <None Include="ex1_multi.fsx" />
+    <Compile Include="LogisticRegression.fs" />
+    <None Include="Test Logistic Regression.fsx" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DynamicDataDisplay">
@@ -67,6 +70,9 @@
     <Reference Include="mscorlib" />
     <Reference Include="MSDN.FSharpChart">
       <HintPath>libs\MSDN.FSharpChart.dll</HintPath>
+    </Reference>
+    <Reference Include="Plot3D">
+      <HintPath>libs\Plot3D.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

@@ -21,9 +21,13 @@
 // WPFChart
 #r "libs/WPFChart.dll"
 
+// Plot3D
+#r "libs/Plot3D.dll"
+
 // Utils
 #load "FsWpf.fs"
 #load "ChartWindow.fs"
+#load "SurfacePlotWindow.fs"
 #load "IterationExtensions.fs"
 #load "ChartExtensions.fs"
 #load "LinearAlgebraExtensions.fs"

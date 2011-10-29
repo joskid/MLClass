@@ -4,3 +4,5 @@ obj/
 *.csproj.user
 libs/WPFChart/bin/*
 libs/WPFChart/obj/*
+libs/Plot3D/bin/*
+libs/Plot3D/obj/*

@@ -16,7 +16,6 @@ DenseMatrix.Identity(5) |> printfn "%O"
 printfn "Plotting Data ..."
     
 let data = LinearRegressionWithOneVariable.loadData "data/ex1data1.txt"
-    
 let chartWindow =
     FSharpChart.Point(data, Name = "Training Data")
     |> withRedCrossMarkerStyle
@@ -39,7 +38,7 @@ printfn "θ found by gradient descent: %A" θ
 
 let predictions = [ for (x, _) in data -> (x, LinearRegressionWithOneVariable.h θ x) ]
 FSharpChart.Line(predictions, Name = "Linear Regression")
-|> FSharpChart.WithLegend()    
+|> FSharpChart.WithLegend()
 |> chartWindow.Combine
 
 // Predict values for population sizes of 35,000 and 70,000
@@ -53,5 +52,6 @@ printfn "For population = 70,000, we predict a profit of %A" (predict2 * 10000.0
 printfn "Visualizing J(θ0, θ1) ..."
 
 plotSurface "J surface" (-10.0, -1.0) (10.0, 4.0) (LinearRegressionWithOneVariable.J data)
+plotSurface2 "J surface" (-10.0, -1.0) (10.0, 4.0) (LinearRegressionWithOneVariable.J data)
 
 plotContour "J contour" ("θ0", "θ1") (-10.0, -1.0) (10.0, 4.0) (LinearRegressionWithOneVariable.J data)

@@ -3,13 +3,9 @@
 open System.Drawing
 open System.IO
 open System.Windows
-open System.Windows.Forms
 open System.Windows.Forms.DataVisualization.Charting
 open System.Windows.Forms.Integration
-open System.Windows.Markup
-
 open MSDN.FSharp.Charting
-
 open FsWpf
 
 type ChartWindow(title, chart: ChartTypes.GenericChart) as this =
@@ -25,7 +21,7 @@ type ChartWindow(title, chart: ChartTypes.GenericChart) as this =
                               |> FSharpChart.WithMargin(5.0f, 5.0f, 5.0f, 5.0f)
 
     let setChart() =
-        let chartControl = new ChartControl(chart, Dock = DockStyle.Fill)
+        let chartControl = new ChartControl(chart)
         this.chartHost.Child <- chartControl
         chartControl
 
