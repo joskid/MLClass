@@ -54,7 +54,7 @@ let plotGradientDescentIterations α maxIterations (X, y) =
 
     θiterations.[θiterations.Length - 1]        
 
-let featureNormalize (X: #Matrix<float>) =    
+let featureNormalize (X: Matrix<float>) =
     
     let μ = 
         X.ColumnEnumerator() 
@@ -66,11 +66,18 @@ let featureNormalize (X: #Matrix<float>) =
         |> Seq.map (fun (j, col) -> col.StandardDeviation()) 
         |> DenseVector.ofSeq    
     
-    let X = 
-        X |> Matrix.mapRows (fun i row -> (row - μ) ./ σ)
-    
-    (X, μ, σ)
-    
+    let alternative1() =
+        let X = X |> Matrix.mapRows (fun i row -> (row - μ) ./ σ)
+        (X, μ, σ)
+
+    let alternative2() =
+        let μExpanded = DenseMatrix.initRow X.RowCount X.ColumnCount (fun _ -> μ)
+        let σDiag = DenseMatrix.diag σ
+        let X = (X - μExpanded) * σDiag.Inverse()
+        (X, μ, σ)
+
+    alternative2()
+
 let normalEquation (X, y) =
     assert (Matrix.rowCount X = Vector.length y)
     
