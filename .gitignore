@@ -1,8 +1,8 @@
-bin/
-obj/
+FSharp/bin/
+FSharp/obj/
 *.suo
 *.csproj.user
-libs/WPFChart/bin/*
-libs/WPFChart/obj/*
-libs/Plot3D/bin/*
-libs/Plot3D/obj/*
+FSharp/libs/WPFChart/bin/*
+FSharp/libs/WPFChart/obj/*
+FSharp/libs/Plot3D/bin/*
+FSharp/libs/Plot3D/obj/*

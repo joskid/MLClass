@@ -15,7 +15,7 @@ DenseMatrix.Identity(5) |> printfn "%O"
 
 printfn "Plotting Data ..."
     
-let data = LinearRegressionWithOneVariable.loadData "data/ex1data1.txt"
+let data = LinearRegressionWithOneVariable.loadData "../Matlab/mlclass-ex1/ex1data1.txt"
 let chartWindow =
     FSharpChart.Point(data, Name = "Training Data")
     |> withRedCrossMarkerStyle

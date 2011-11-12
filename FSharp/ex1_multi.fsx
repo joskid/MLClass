@@ -7,7 +7,7 @@ open MSDN.FSharp.Charting
 
 // ================ Part 1: Feature Normalization ================
 
-let X, y = LinearRegression.loadData "data/ex1data2.txt"
+let X, y = LinearRegression.loadData "../Matlab/mlclass-ex1/ex1data2.txt"
 
 printfn "First 10 examples from the dataset:"
 for i = 0 to 10 do
