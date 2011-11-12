@@ -33,10 +33,13 @@ let innerGradientDescent iterationFunction α maxIterations (X, y) =
     let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
     let m = Matrix.rowCount X |> float
 
-    let iteration θ =
+    let iteration1 θ =
         θ - (α / m) * (X |> Matrix.Σrows (fun i x -> (θ * x - y.[i]) * x))
+
+    let iteration2 θ =
+        θ - (α / m) * X.Transpose() * (X * θ - y)
     
-    new DenseVector(Matrix.columnCount X, 0.0) :> Vector<float> |> iterationFunction iteration maxIterations
+    new DenseVector(Matrix.columnCount X, 0.0) :> Vector<float> |> iterationFunction iteration2 maxIterations
 
 let gradientDescent α = innerGradientDescent iterateUntilConvergence α
 let gradientDescentWithIntermediateResults α = innerGradientDescent iterateUntilConvergenceWithIntermediateResults α

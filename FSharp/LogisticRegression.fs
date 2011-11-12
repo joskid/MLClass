@@ -35,10 +35,14 @@ let innerGradientDescent iterationFunction α maxIterations (X, y) =
     let h θ x = 
         sigmoid (θ * x)
 
-    let iteration θ =
+    let iteration1 θ =
         θ - (α / m) * (X |> Matrix.Σrows (fun i x -> ((h θ x) - y.[i]) * x))
+
+    let iteration2 θ =
+        let h = X * θ |> Vector.map sigmoid
+        θ - (α / m) * X.Transpose() * (h - y)
     
-    new DenseVector(Matrix.columnCount X, 0.0) :> Vector<float> |> iterationFunction iteration maxIterations
+    new DenseVector(Matrix.columnCount X, 0.0) :> Vector<float> |> iterationFunction iteration2 maxIterations
 
 let gradientDescent α = innerGradientDescent iterateUntilConvergence α
 let gradientDescentWithIntermediateResults α = innerGradientDescent iterateUntilConvergenceWithIntermediateResults α
