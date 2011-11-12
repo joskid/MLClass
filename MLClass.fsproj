@@ -47,13 +47,14 @@
     <Compile Include="LinearAlgebraExtensions.fs" />
     <Compile Include="LinearRegressionWithOneVariable.fs" />
     <Compile Include="LinearRegression.fs" />
+    <Compile Include="LogisticRegression.fs" />
+    <Compile Include="LinearRegressionWithRegularization.fs" />
+    <Compile Include="LogisticRegressionWithRegularization.fs" />
     <None Include="Setup.fsx" />
     <None Include="Test LinearRegresionWithOneVariable.fsx" />
     <None Include="Test LinearRegression.fsx" />
     <None Include="ex1.fsx" />
     <None Include="ex1_multi.fsx" />
-    <Compile Include="LogisticRegression.fs" />
-    <None Include="Test Logistic Regression.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,6 @@ let J (X, y) θ =
     let m = Matrix.rowCount X |> float
 
     let alternative1() = 
-        let sqr x = x ** 2.0
         1.0 / (2.0*m) * Vector.Σ ((X * θ - y) .^ 2.0)
 
     let alternative2() = 
