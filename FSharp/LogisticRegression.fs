@@ -4,32 +4,41 @@ open MathNet.Numerics.LinearAlgebra.Double
 open MathNet.Numerics.LinearAlgebra.Generic
 
 let sigmoid x =
-    1.0 / (1.0 + exp -x)
+    1. / (1. + exp -x)
 
 let h (θ: Vector<float>) x = 
     let n = Vector.length x
     assert (Vector.length θ = n + 1)
-    let x = x |> Vector.insert 0 1.0
+    let x = x |> Vector.insert 0 1.
     sigmoid (θ * x)
 
 let J (X, y) (θ: Vector<float>) =
     assert (Matrix.rowCount X = Vector.length y)
 
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))
     let m = Matrix.rowCount X |> float
 
-    let hθ x = 
-        sigmoid (θ * x)
+    let alternative1() =
+        
+        let hθ x = 
+            sigmoid (θ * x)
+        
+        let cost i x =
+            y.[i] * log (hθ x) + (1. - y.[i]) * log (1. - hθ x)
+        
+        1. / m * (X |> Matrix.Σrows cost)
 
-    let cost i x =
-        y.[i] * log (hθ x) + (1.0 - y.[i]) * log (1.0 - hθ x)
-
-    -1.0 / m * (X |> Matrix.Σrows cost)
+    let alternative2() =
+        let h = θ * X |> Vector.map sigmoid        
+        let errors = -y .* (h |> Vector.map log) - (1. .- y) .* ((1. .- h) |> Vector.map log)
+        1. / m * (errors * errors)
+        
+    alternative2()
 
 let innerGradientDescent iterationFunction α maxIterations (X, y) =    
     assert (Matrix.rowCount X = Vector.length y)
         
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))
     let m = Matrix.rowCount X |> float
 
     let h θ x = 

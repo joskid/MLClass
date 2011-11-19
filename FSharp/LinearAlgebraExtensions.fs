@@ -6,14 +6,17 @@ open MathNet.Numerics.LinearAlgebra.Generic
 [<AutoOpen>]
 module VectorOperators = 
 
-    let (.^) (v: #Vector<float>) exp = 
+    let inline (.^) (v: #Vector<float>) exp = 
         Vector.map (fun x -> x ** exp) v
 
-    let (./) (v: #Vector<float>) divider = 
+    let inline (./) (v: #Vector<float>) divider = 
         v.PointwiseDivide(divider)
 
-    let (.*) (v: #Vector<float>) divider = 
+    let inline (.*) (v: #Vector<float>) divider = 
         v.PointwiseMultiply(divider)   
+
+    let inline (.-) (scalar: float) (v: #Vector<float>) = 
+        DenseVector.init v.Count (fun i -> scalar - v.[i])
 
 module Vector = 
     let inline length (v: #Vector<float>) = v.Count

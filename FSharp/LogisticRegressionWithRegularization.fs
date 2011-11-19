@@ -3,44 +3,43 @@
 open MathNet.Numerics.LinearAlgebra.Double
 open MathNet.Numerics.LinearAlgebra.Generic
 
+let sigmoid x =
+    1. / (1. + exp -x)
+
 let h (θ: Vector<float>) x = 
     let n = Vector.length x
     assert (Vector.length θ = n + 1)
-    let x = x |> Vector.insert 0 1.0
-    1.0 / (1.0 + exp(- (θ * x)))
+    let x = x |> Vector.insert 0 1.
+    sigmoid (θ * x)
 
 let J (X, y) λ (θ: Vector<float>) =
     assert (Matrix.rowCount X = Vector.length y)
 
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))
     let m = Matrix.rowCount X |> float
 
-    let hθ x = 
-        1.0 / (1.0 + exp (- (θ * x)))
+    let θforReg = θ.Clone()
+    θforReg.[0] <- 0.
 
-    let cost i x =
-        y.[i] * log (hθ x) + (1.0 - y.[i]) * log (1.0 - hθ x)
+    let h = θ * X |> Vector.map sigmoid        
+    let errors = -y .* (h |> Vector.map log) - (1. .- y) .* ((1. .- h) |> Vector.map log)
+    1. / m * (errors * errors) + λ / (2. * m) * (θforReg * θforReg)
 
-    let alternative1() = 
-        -1.0 / m * (X |> Matrix.Σrows cost) + λ / (2.0 * m) * Vector.Σ (θ .^ 2.0)
-
-    let alternative2() = 
-        -1.0 / m * (X |> Matrix.Σrows cost) + λ / (2.0 * m) * (θ * θ)
-
-    alternative2()
-
-let innerGradientDescent iterationFunction α maxIterations λ (X, y) =    
+let innerGradientDescent iterationFunction α maxIterations (λ: float) (X, y) =    
     assert (Matrix.rowCount X = Vector.length y)
         
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))
     let m = Matrix.rowCount X |> float
 
-    let h θ x = 
-        1.0 / (1.0 + exp (- (θ * x)))
+    let iteration (θ: Vector<float>) =        
 
-    let iteration θ =
-        θ * (1.0 - α * λ / m) - (α / m) * (X |> Matrix.Σrows (fun i x -> ((h θ x) - y.[i]) * x))
-    
+        let θforReg = θ.Clone()
+        θforReg.[0] <- 0.
+
+        let h = θ * X |> Vector.map sigmoid                
+        let errors = X.Transpose() * (h - y)
+        θ - (α / m) * errors - λ / m * θforReg
+
     new DenseVector(Matrix.columnCount X, 0.0) :> Vector<float> |> iterationFunction iteration maxIterations
 
 let gradientDescent α = innerGradientDescent iterateUntilConvergence α

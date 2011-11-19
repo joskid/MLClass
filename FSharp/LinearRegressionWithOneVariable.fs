@@ -4,7 +4,7 @@ let h (θ0, θ1) x = θ0 + θ1 * x
 
 let J data θ =
     let m = List.length data |> float
-    1.0 / (2.0*m) * List.sumBy (fun (x, y) -> (h θ x - y) ** 2.0) data
+    1. / (2. * m) * List.sumBy (fun (x, y) -> (h θ x - y) ** 2.) data
     
 let private innerGradientDescent iterationFunction α maxIterations data =
     let m = List.length data |> float    

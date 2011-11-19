@@ -9,28 +9,28 @@ open MathNet.Numerics.Statistics
 let h (θ: Vector<float>) x = 
     let n = Vector.length x
     assert (Vector.length θ = n + 1)
-    let x = x |> Vector.insert 0 1.0
+    let x = x |> Vector.insert 0 1.
     θ * x
 
 let J (X, y) θ =
     assert (Matrix.rowCount X = Vector.length y)
 
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))
     let m = Matrix.rowCount X |> float
 
     let alternative1() = 
-        1.0 / (2.0*m) * Vector.Σ ((X * θ - y) .^ 2.0)
+        1. / (2. * m) * Vector.Σ ((X * θ - y) .^ 2.)
 
     let alternative2() = 
         let errors = X * θ - y
-        1.0 / (2.0*m) * (errors * errors)
+        1. / (2. * m) * (errors * errors)
     
     alternative2()    
 
 let innerGradientDescent iterationFunction α maxIterations (X, y) =    
     assert (Matrix.rowCount X = Vector.length y)
         
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))
     let m = Matrix.rowCount X |> float
 
     let iteration1 θ =
@@ -83,7 +83,7 @@ let featureNormalize (X: Matrix<float>) =
 let normalEquation (X, y) =
     assert (Matrix.rowCount X = Vector.length y)
     
-    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.0))   
+    let X = X.InsertColumn(0, new DenseVector(Matrix.rowCount X, 1.))   
     let X' = X.Transpose()
 
     (X' * X).Inverse() * X' * y
