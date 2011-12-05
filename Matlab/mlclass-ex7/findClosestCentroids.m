@@ -21,11 +21,12 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i = 1:size(X,1)
+    x = repmat(X(i,:), size(centroids,1), 1);
+    dist = sum((x - centroids) .^ 2, 2);
+    [ignore, index] = min(dist);
+    idx(i) = index;
+end
 
 % =============================================================
 
